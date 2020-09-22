@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lig-4</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <!--Título inicial do jogo-->
+    <h1>Lig-4</h1>
+
+    <!--Seção onde serão colocados os botões para início da interação do usuário com o jogo-->
+    <section class="inicio">
+        <div class="jogar">
+            <p>Inicíe o Jogo</p>
+            <button id='button'>Jogar</button>
+        </div>
+    </section>
+
+    <!--Criação dos discos com as devidas identificações para que apareçam na tela apenas quando o usuário clicar no botão "Jogar"-->
+    <section class="discos">
+    <div class="red" id="disco"></div>
+    <div class="black" id="disco2"></div>
+    </section>
+
+    <!--Criação da Tabela já com a colunas identificadas, para qua sejam chamadas de acordo com cada clique do usuário, que acontecerá nas devidas colunas, durante o jogo -->
+    <div class="tabela">
+        <table>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+            <tr>
+              <td id="coluna1"></td>
+              <td id="coluna2"></td>
+              <td id="coluna3"></td>
+              <td id="coluna4"></td>
+              <td id="coluna5"></td>
+              <td id="coluna6"></td>
+              <td id="coluna7"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!--Mensagem de vitória, que será mostrada ao usuário quando o mesmo conseguir finalizar o jogo com sucesso-->
+    <div id='ganhou'></div>
+    <script src="script.js"></script>
+</body>
+</html>
