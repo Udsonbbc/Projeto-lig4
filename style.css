@@ -50,14 +50,15 @@ table, th, td {
     flex-direction: inherit;
 }
 .vermelho{
-
+/* Eu tive que desativar as propriedades de margem pois com a configuração anterior os discos desconfiguravam as medidas da tabela.
+Responsável pela alteração: Renan Nunes */
 	border-radius: 100%;
     background:red; 
-    width: 3.1vw; 
-    height: 3.1vw;
-    margin-right: 26vw;
+    width: 50px; 
+    height: 50px;
+    /* margin-right: 26vw;
     margin-left: 34vw;
-    margin-top: 1vw;
+    margin-top: 1vw; */
 }
 .preto{
     align-items: center;
