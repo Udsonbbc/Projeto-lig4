@@ -42,17 +42,27 @@ table, th, td {
     border: 4px solid rgb(2, 0, 73);
     border-collapse: collapse;
     padding: 2.1vw;
-    margin-left: 34vw;
-    margin-top: 1vw;
   }
+
+td {
+    width: 20px; 
+    height: 20px;
+  }
+
+table {
+    margin: 1vw auto;
+    text-align: center;
+}
+
 .discos{
     display: flex;
     flex-direction: inherit;
+    height: 100px;
 }
 .vermelho{
 /* Eu tive que desativar as propriedades de margem pois com a configuração anterior os discos desconfiguravam as medidas da tabela.
 Responsável pela alteração: Renan Nunes */
-	border-radius: 100%;
+	border-radius: 50%;
     background:red; 
     width: 50px; 
     height: 50px;
@@ -62,10 +72,9 @@ Responsável pela alteração: Renan Nunes */
 }
 .preto{
     align-items: center;
-	border-radius: 100%;
+	border-radius: 50%;
     background: black; 
-    width: 3.1vw; 
-    height: 3.1vw;
-    margin-top: 1vw;
+    width: 50px; 
+    height: 50px;
 }
 
