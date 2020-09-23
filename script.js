@@ -30,7 +30,7 @@ function addDisco() {
      let parentClass = this.className
      let firstClass = parentClass.split(' ')[0]
      if (!isBlack) {
-          for (let linha = 1; linha <= 6; linha++) {
+          for (let linha = 6; linha >= 0; linha--) {
                if (document.querySelector(`#${firstClass}L${linha}`).hasChildNodes()) {
                     continue
                } else {
@@ -38,14 +38,15 @@ function addDisco() {
                     discoVermelho.className = 'vermelho'
                     let valorVermelho = 1
                     document.querySelector(`#${firstClass}L${linha}`).appendChild(discoVermelho);
-                    discValueRed.push(valorVermelho)
-                    console.log(discValueRed)
+                    let valueOfColumn = Number(firstClass.split('')[1])
+                    matrix[linha-1][valueOfColumn-1] = valorVermelho
+                    console.log(matrix)
                     isBlack = true
                     break
                }
           }
      } else {
-          for (let linha = 1; linha <= 6; linha++) {
+          for (let linha = 6; linha >= 0; linha--) {
                if (document.querySelector(`#${firstClass}L${linha}`).hasChildNodes()) {
                     continue
                } else {
@@ -53,8 +54,9 @@ function addDisco() {
                     discoPreto.className = 'preto'
                     let valorPreto = 2
                     document.querySelector(`#${firstClass}L${linha}`).appendChild(discoPreto);
-                    discValueBlack.push(valorPreto)
-                    console.log(discValueBlack)
+                    let valueOfColumn = Number(firstClass.split('')[1])
+                    matrix[linha-1][valueOfColumn-1] = valorPreto
+                    console.log(matrix)
                     isBlack = false
                     break
                }
@@ -62,6 +64,17 @@ function addDisco() {
      }
      Op(this)
 }
+
+let matrix = [
+     [0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0]
+]
+
+console.log(matrix)
 
 let discValueRed = [];
 let discValueBlack = [];
