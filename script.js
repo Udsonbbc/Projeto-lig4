@@ -22,6 +22,9 @@ function setGame() {
           funcaoColuna[i].addEventListener('click', addDisco);
      }
 }
+let valorVermelho = 1
+let redVictory = 4
+let valorPreto = 2
 let isBlack = false //F: Esta variável faz com que decida qual peça está jogando, e ao final do turno troca de jogador
 //F: A função pega a primeira classe do quadrado clicado, que representa a sua coluna e verifica a partir da linha se já há
 //algumas "peça" nela (hasChildNodes), caso não tenha ela insere o disco, troca de jogador e termina a função
@@ -36,10 +39,9 @@ function addDisco() {
                } else {
                     let discoVermelho = document.createElement('div');
                     discoVermelho.className = 'vermelho'
-                    let valorVermelho = 1
                     document.querySelector(`#${firstClass}L${linha}`).appendChild(discoVermelho);
                     let valueOfColumn = Number(firstClass.split('')[1])
-                    matrix[linha-1][valueOfColumn-1] = valorVermelho
+                    matrix[linha - 1][valueOfColumn - 1] = valorVermelho
                     console.log(matrix)
                     isBlack = true
                     break
@@ -52,79 +54,100 @@ function addDisco() {
                } else {
                     let discoPreto = document.createElement('div');
                     discoPreto.className = 'preto'
-                    let valorPreto = 2
                     document.querySelector(`#${firstClass}L${linha}`).appendChild(discoPreto);
                     let valueOfColumn = Number(firstClass.split('')[1])
-                    matrix[linha-1][valueOfColumn-1] = valorPreto
+                    matrix[linha - 1][valueOfColumn - 1] = valorPreto
                     console.log(matrix)
                     isBlack = false
                     break
                }
           }
      }
-     Op(this)
 }
 
 let matrix = [
-     [0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0]
+     [0, 0, 0, 1, 0, 0, 0],
+     [1, 1, 1, 1, 0, 0, 0],
+     [0, 0, 0, 1, 0, 0, 0],
+     [0, 0, 0, 1, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0],
+     [2, 2, 2, 2, 0, 0, 0]
 ]
 
 console.log(matrix)
 
-let discValueRed = [];
-let discValueBlack = [];
+const edgeX = matrix[0].length - 1;
+const edgeY = matrix.length - 3;
 
-
-let linhas = document.querySelectorAll('tr');
-console.log(linhas.length)
-let coluna = document.querySelectorAll('.ultimaLinha td').length
-console.log(coluna)
-// CONDIÇÃO DE VITÓRIA HORIZONTALMENTE 
-
-function Op(e) {
-
-     for (let i = 0; i < linhas.length; i++){
-
-          for (let j = 0; j < coluna.length - 3; j++){
-
-
+function redHorizontalVictory() {
+     let counterRed = 0
+     for (let y = 0; y < matrix.length; y++) {
+          for (let x = 0; x < edgeX; x++) {
+               let cell = matrix[y][x];
+               if (cell !== 0 && cell !== valorPreto) {
+                    if (cell === matrix[y][x + 1] && cell === matrix[y][x + 2] && cell === matrix[y][x + 3]) {
+                         counterRed ++
+                    }
+                    if (cell === matrix[y][x - 1] && cell === matrix[y][x - 2] && cell === matrix[y][x - 3]) {
+                         counterRed ++
+                    }
+                    if (cell === matrix[y][x - 1] && cell === matrix[y][x + 1] && cell === matrix[y][x + 2]) {
+                         counterRed ++
+                    }
+                    if (cell === matrix[y][x - 2] && cell === matrix[y][x - 1] && cell === matrix[y][x + 1]) {
+                         counterRed ++
+                    }
+               }
           }
      }
-
-     // if (e.hasChildNodes()) {
-     //      let colunaInt = e.id.split('')
-     //      console.log(colunaInt)
-     //      let classComparar = e.children[0].className
-     //      for (let i = 1; i <= 3; i++) {
-     //           console.log(Number(colunaInt[1]) + i)
-     //      }
-     // } else {
-     //      console.log('oi')
-     // }
-
-     // if (classComparar === (colunaInt[1])
+     /* console.log(counterRed) */
+     return counterRed
 }
+redHorizontalVictory()
 
-// // HORIZONTAL
-// // iterate each row
-// for(let y = 0; y < board.length; y++){
+function blackHorizontalVictory() {
+     let counterblack = 0
+     for (let y = 0; y < matrix.length; y++) {
+          for (let x = 0; x < edgeX; x++) {
+               let cell = matrix[y][x];
+               if (cell !== 0 && cell !== valorVermelho) {
+                    if (cell === matrix[y][x + 1] && cell === matrix[y][x + 2] && cell === matrix[y][x + 3]) {
+                         counterblack ++
+                    }
+                    if (cell === matrix[y][x - 1] && cell === matrix[y][x - 2] && cell === matrix[y][x - 3]) {
+                         counterblack ++
+                         console.log(counterblack)
+                    }
+                    if (cell === matrix[y][x - 1] && cell === matrix[y][x + 1] && cell === matrix[y][x + 2]) {
+                         counterblack ++
+                         console.log(counterblack)
+                    }
+                    if (cell === matrix[y][x - 2] && cell === matrix[y][x - 1] && cell === matrix[y][x + 1]) {
+                         counterblack ++
+                         console.log(counterblack)
+                    }
+               }
+          }
+     }
+     console.log(counterblack)
+     return counterblack
+}
+blackHorizontalVictory()
 
-//      // iterate each cell in the row
-//      for(let x = 0; x < edgeX; x++) {
-//        let cell = board[y][x];
+function redVerticalVictory() {
+     let counterRed = 0
+     for (let y = 0; y < edgeY; y++) {
+          for (let x = 0; x < matrix[0].length; x++) {
+               cell = matrix[y][x];
+               if (cell !== 0 && cell !== valorPreto) {
+                    if (cell === matrix[y + 1][x] && cell === matrix[y + 2][x] && cell === matrix[y + 3][x]) {
+                         counterRed ++
+                    }
+               }
+          }
+     }
+     console.log(counterRed)
+}
+redVerticalVictory()
 
-//        // Only check if cell is filled
-//        if(cell !== 0) {
 
-//          // Check the next two cells for the same value
-//          if(cell === board[y][x+1] && cell === board[y][x+2] ) {
-//            console.log("3 in a row vertical found at " + (x+1) + ":" + (y+1))
-//          }
-//        }
-//      }
-//    }
