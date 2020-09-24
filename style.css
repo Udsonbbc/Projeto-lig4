@@ -73,20 +73,224 @@ table {
     margin: 0;
 }
 .vermelho{
-/* Eu tive que desativar as propriedades de margem pois com a configuração anterior os discos desconfiguravam as medidas da tabela.
-Responsável pela alteração: Renan Nunes */
 	border-radius: 50%;
     background:red; 
-    width: 7vw; 
-    height: 7vw;
+    width: 10vw; 
+    height: 10vw;
     margin: 0 auto;
 }
 .preto{
     align-items: center;
 	border-radius: 50%;
     background: black; 
-    width: 7vw; 
-    height: 7vw;
+    width: 10vw; 
+    height: 10vw;
     margin: 0 auto;
 }
 
+.empatou {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 2vw;
+    font-size: 2rem;
+}
+
+.animacao6 {
+    animation-name: example6;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes example6 {
+    0% {bottom:126vw;}
+    66% {bottom: 0;}
+    70% {bottom: 10vw;}
+    75% {bottom: 0;}
+    80% {bottom: 8vw;}
+    85% {bottom: 0vw;}
+    90% {bottom: 4vw;}
+    95% {bottom: 0vw;}
+    100% {bottom: 0}
+}
+
+.animacao5 {
+    animation-name: example5;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes example5 {
+    0% {bottom:105vw;}
+    66% {bottom: 0;}
+    70% {bottom: 10vw;}
+    75% {bottom: 0;}
+    80% {bottom: 8vw;}
+    85% {bottom: 0vw;}
+    90% {bottom: 4vw;}
+    95% {bottom: 0vw;}
+    100% {bottom: 0}
+}
+
+.animacao4 {
+    animation-name: example4;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes example4 {
+    0% {bottom:84vw;}
+    66% {bottom: 0;}
+    70% {bottom: 10vw;}
+    75% {bottom: 0;}
+    80% {bottom: 8vw;}
+    85% {bottom: 0vw;}
+    90% {bottom: 4vw;}
+    95% {bottom: 0vw;}
+    100% {bottom: 0}
+}
+
+.animacao3 {
+    animation-name: example3;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes example3 {
+    0% {bottom:63vw;}
+    66% {bottom: 0;}
+    70% {bottom: 10vw;}
+    75% {bottom: 0;}
+    80% {bottom: 8vw;}
+    85% {bottom: 0vw;}
+    90% {bottom: 4vw;}
+    95% {bottom: 0vw;}
+    100% {bottom: 0}
+}
+
+.animacao2 {
+    animation-name: example2;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes example2 {
+    0% {bottom:42vw;}
+    66% {bottom: 0;}
+    70% {bottom: 10vw;}
+    75% {bottom: 0;}
+    80% {bottom: 8vw;}
+    85% {bottom: 0vw;}
+    90% {bottom: 4vw;}
+    95% {bottom: 0vw;}
+    100% {bottom: 0}
+}
+
+.animacao1 {
+    animation-name: example1;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+
+@keyframes example1 {
+    0% {bottom:21vw;}
+    66% {bottom: 0;}
+    70% {bottom: 5vw;}
+    75% {bottom: 0;}
+    80% {bottom: 4vw;}
+    85% {bottom: 0;}
+    90% {bottom: 2vw;}
+    95% {bottom: 0;}
+    100% {bottom: 0}
+}
+
+@media only screen and (min-width: 768px) {
+    td {
+        height: 100px;
+        width: 100px;
+    }
+
+    .vermelho, .preto {
+        height: 80px;
+        width: 80px;
+    }
+
+    @keyframes example6 {
+        0% {bottom: 600px;}
+        66% {bottom: 0;}
+        70% {bottom: 50px}
+        75% {bottom: 0;}
+        80% {bottom: 25px;}
+        85% {bottom: 0;}
+        90% {bottom: 12px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+    @keyframes example5 {
+        0% {bottom: 500px;}
+        66% {bottom: 0;}
+        70% {bottom: 50px}
+        75% {bottom: 0;}
+        80% {bottom: 25px;}
+        85% {bottom: 0;}
+        90% {bottom: 12px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+    @keyframes example4 {
+        0% {bottom: 400px;}
+        66% {bottom: 0;}
+        70% {bottom: 50px}
+        75% {bottom: 0;}
+        80% {bottom: 25px;}
+        85% {bottom: 0;}
+        90% {bottom: 12px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+    @keyframes example3 {
+        0% {bottom: 300px;}
+        66% {bottom: 0;}
+        70% {bottom: 50px}
+        75% {bottom: 0;}
+        80% {bottom: 25px;}
+        85% {bottom: 0;}
+        90% {bottom: 12px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+    @keyframes example2 {
+        0% {bottom: 200px;}
+        66% {bottom: 0;}
+        70% {bottom: 50px}
+        75% {bottom: 0;}
+        80% {bottom: 25px;}
+        85% {bottom: 0;}
+        90% {bottom: 12px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+    @keyframes example1 {
+        0% {bottom: 100px;}
+        66% {bottom: 0;}
+        70% {bottom: 25px}
+        75% {bottom: 0;}
+        80% {bottom: 12px;}
+        85% {bottom: 0;}
+        90% {bottom: 6px;}
+        95% {bottom: 0;}
+        100% {bottom: 0}
+    }
+
+
+}

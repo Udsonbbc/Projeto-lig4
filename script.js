@@ -12,6 +12,17 @@ function setGame() {
           funcaoColuna[i].addEventListener('click', addDisco);
      }
      indicacao()
+     matrix = [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0]
+     ]
+     button.setAttribute('disabled', 'disabled')
+     document.querySelector('#ganhou').innerHTML = ''
+     button.textContent = 'Iniciar o jogo'
 }
 
 //TODO: Continuar a função que irá indicar qual peça está sendo colocada.
@@ -37,7 +48,7 @@ function indicacao() {
           local.style.backgroundColor = 'black'
           local.style.color = 'white'
           local.style.textTransform = 'uppercase'
-          local.style.fontSize = '1.5rem' 
+          local.style.fontSize = '1.5rem'
      }
 }
 
@@ -58,6 +69,7 @@ function addDisco() {
                     let discoVermelho = document.createElement('div');
                     discoVermelho.className = 'vermelho'
                     document.querySelector(`#${firstClass}L${line}`).appendChild(discoVermelho);
+                    discoVermelho.classList.add(`animacao${line}`)
                     let valueOfColumn = Number(firstClass.split('')[1])
                     matrix[line - 1][valueOfColumn - 1] = redValue
                     isBlack = true
@@ -72,6 +84,7 @@ function addDisco() {
                     let discoPreto = document.createElement('div');
                     discoPreto.className = 'preto'
                     document.querySelector(`#${firstClass}L${line}`).appendChild(discoPreto);
+                    discoPreto.classList.add(`animacao${line}`)
                     let valueOfColumn = Number(firstClass.split('')[1])
                     matrix[line - 1][valueOfColumn - 1] = blackValue
                     isBlack = false
@@ -84,6 +97,7 @@ function addDisco() {
      vitoriaDiagonalDireita()
      vitoriaDiagonalEsquerda()
      indicacao()
+     empate()
 }
 
 let matrix = [
@@ -97,6 +111,7 @@ let matrix = [
 
 const endOfColumn = matrix[0].length - 3;
 const endOfLine = matrix.length - 3;
+let valordeEmpate = false
 
 function vitoriaHorizontal() {
      for (let y = 0; y < matrix.length; y++) {
@@ -109,16 +124,19 @@ function vitoriaHorizontal() {
                               // Aparecer a mensagem de quem venceu;
                               // posibilidade de resetar o jogo
                               console.log('win Vermelho')
+                              valordeEmpate = true
                          } else {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
                               // posibilidade de resetar o jogo
                               console.log('win Preto')
+                              valordeEmpate = true
                          }
                     }
                }
           }
      }
+     return valordeEmpate
 }
 
 function vitoriaVertical() {
@@ -129,13 +147,16 @@ function vitoriaVertical() {
                     if (posicao === matrix[y + 1][x] && posicao === matrix[y + 2][x] && posicao === matrix[y + 3][x]) {
                          if (posicao === 1) {
                               console.log('vertical Vermelho Venceu')
+                              valordeEmpate = true
                          } else {
                               console.log('vertical Preto Venceu')
+                              valordeEmpate = true
                          }
                     }
                }
           }
      }
+     return valordeEmpate
 }
 
 function vitoriaDiagonalDireita() {
@@ -147,14 +168,17 @@ function vitoriaDiagonalDireita() {
                          posicao === matrix[i + 3][j - 3]) {
                          if (posicao === 1) {
                               console.log('vermelho venceu na diagonal')
+                              valordeEmpate = true
                          } else {
                               console.log('prete venceu na diagonal')
+                              valordeEmpate = true
                          }
                     }
                }
           }
 
      }
+     return valordeEmpate
 }
 
 function vitoriaDiagonalEsquerda() {
@@ -166,12 +190,37 @@ function vitoriaDiagonalEsquerda() {
                          posicao === matrix[i + 3][j + 3]) {
                          if (posicao === 1) {
                               console.log('vermelho venceu na diagonal')
+                              valordeEmpate = true
                          } else {
                               console.log('prete venceu na diagonal')
+                              valordeEmpate = true
                          }
                     }
                }
           }
+     }
+     return valordeEmpate
+}
 
+const temDisco = (elemento) => elemento === 0;
+
+function empate() {
+     if (!matrix[0].some(temDisco)
+          && !vitoriaHorizontal()
+          && !vitoriaVertical()
+          && !vitoriaDiagonalDireita()
+          && !vitoriaDiagonalEsquerda()) {
+
+          button.removeAttribute('disabled')
+          button.textContent = 'Reiniciar o jogo'
+          let msg = document.createElement('p');
+          msg.textContent = 'O Jogo empatou';
+          msg.classList.add('empatou');
+          document.querySelector('#ganhou').appendChild(msg)
+
+          jogavel = document.querySelectorAll('.coluna')
+          for (let i = 0; i < jogavel.length; i++) {
+               jogavel[i].removeEventListener('click', addDisco)
+          }
      }
 }
