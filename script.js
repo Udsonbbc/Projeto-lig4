@@ -1,30 +1,48 @@
 //Evento de clique que irá iniciar o jogo, mostrando ao usuário os dois discos "Preto/Vermelho"
 //F: Modifiquei o evento de 'onclick' para 'addEventListener'
-let disco = document.getElementById("disco");
-const disco2 = document.getElementById("disco2");
-const vermelho = document.getElementById("button");
 button.addEventListener('click', setGame);
 
-
-//função dque adiciona os discos ma tabela, temos que estudar uma maneira de colocar os disco no começo da tabela, além disso é necessário criar uma
-//função para definir qual disco será criado, vermelho ou preto.
-document.body.addEventListener("dblclick", (e) => {
-     let table = document.querySelector("td");
-     disco = document.getElementById("disco");
-     table.insertAdjacentElement("beforeend", disco)
-})
 
 //F: Adicionei uma classe para todos os quadrados da tabela e para elas distribui a função de adicionar a peça do jogo
 function setGame() {
 
      let funcaoColuna = document.querySelectorAll('.coluna');
      for (let i = 0; i < funcaoColuna.length; i++) {
+          funcaoColuna[i].innerHTML = ''
           funcaoColuna[i].addEventListener('click', addDisco);
      }
+     indicacao()
 }
-let valorVermelho = 1
-let redVictory = 4
-let valorPreto = 2
+
+//TODO: Continuar a função que irá indicar qual peça está sendo colocada.
+function indicacao() {
+     if (!isBlack) {
+          let local = document.querySelector('.discos')
+          local.innerHTML = ''
+          let para = document.createElement('p')
+          local.appendChild(para)
+          para.textContent = 'Jogador Vermelho'
+          local.style.margin = '2vw 0'
+          local.style.backgroundColor = 'red'
+          local.style.color = 'white'
+          local.style.textTransform = 'uppercase'
+          local.style.fontSize = '1.5rem'
+     } else {
+          let local = document.querySelector('.discos')
+          local.innerHTML = ''
+          let para = document.createElement('p')
+          local.appendChild(para)
+          para.textContent = 'Jogador Preto'
+          local.style.margin = '2vw 0'
+          local.style.backgroundColor = 'black'
+          local.style.color = 'white'
+          local.style.textTransform = 'uppercase'
+          local.style.fontSize = '1.5rem' 
+     }
+}
+
+let redValue = 1
+let blackValue = 2
 let isBlack = false //F: Esta variável faz com que decida qual peça está jogando, e ao final do turno troca de jogador
 //F: A função pega a primeira classe do quadrado clicado, que representa a sua coluna e verifica a partir da linha se já há
 //algumas "peça" nela (hasChildNodes), caso não tenha ela insere o disco, troca de jogador e termina a função
@@ -33,121 +51,127 @@ function addDisco() {
      let parentClass = this.className
      let firstClass = parentClass.split(' ')[0]
      if (!isBlack) {
-          for (let linha = 6; linha >= 0; linha--) {
-               if (document.querySelector(`#${firstClass}L${linha}`).hasChildNodes()) {
+          for (let line = 6; line >= 0; line--) {
+               if (document.querySelector(`#${firstClass}L${line}`).hasChildNodes()) {
                     continue
                } else {
                     let discoVermelho = document.createElement('div');
                     discoVermelho.className = 'vermelho'
-                    document.querySelector(`#${firstClass}L${linha}`).appendChild(discoVermelho);
+                    document.querySelector(`#${firstClass}L${line}`).appendChild(discoVermelho);
                     let valueOfColumn = Number(firstClass.split('')[1])
-                    matrix[linha - 1][valueOfColumn - 1] = valorVermelho
-                    console.log(matrix)
+                    matrix[line - 1][valueOfColumn - 1] = redValue
                     isBlack = true
                     break
                }
           }
      } else {
-          for (let linha = 6; linha >= 0; linha--) {
-               if (document.querySelector(`#${firstClass}L${linha}`).hasChildNodes()) {
+          for (let line = 6; line >= 0; line--) {
+               if (document.querySelector(`#${firstClass}L${line}`).hasChildNodes()) {
                     continue
                } else {
                     let discoPreto = document.createElement('div');
                     discoPreto.className = 'preto'
-                    document.querySelector(`#${firstClass}L${linha}`).appendChild(discoPreto);
+                    document.querySelector(`#${firstClass}L${line}`).appendChild(discoPreto);
                     let valueOfColumn = Number(firstClass.split('')[1])
-                    matrix[linha - 1][valueOfColumn - 1] = valorPreto
-                    console.log(matrix)
+                    matrix[line - 1][valueOfColumn - 1] = blackValue
                     isBlack = false
                     break
                }
           }
      }
+     vitoriaHorizontal()
+     vitoriaVertical()
+     vitoriaDiagonalDireita()
+     vitoriaDiagonalEsquerda()
+     indicacao()
 }
 
 let matrix = [
-     [0, 0, 0, 1, 0, 0, 0],
-     [1, 1, 1, 1, 0, 0, 0],
-     [0, 0, 0, 1, 0, 0, 0],
-     [0, 0, 0, 1, 0, 0, 0],
      [0, 0, 0, 0, 0, 0, 0],
-     [2, 2, 2, 2, 0, 0, 0]
+     [0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0]
 ]
 
-console.log(matrix)
+const endOfColumn = matrix[0].length - 3;
+const endOfLine = matrix.length - 3;
 
-const edgeX = matrix[0].length - 1;
-const edgeY = matrix.length - 3;
-
-function redHorizontalVictory() {
-     let counterRed = 0
+function vitoriaHorizontal() {
      for (let y = 0; y < matrix.length; y++) {
-          for (let x = 0; x < edgeX; x++) {
-               let cell = matrix[y][x];
-               if (cell !== 0 && cell !== valorPreto) {
-                    if (cell === matrix[y][x + 1] && cell === matrix[y][x + 2] && cell === matrix[y][x + 3]) {
-                         counterRed ++
-                    }
-                    if (cell === matrix[y][x - 1] && cell === matrix[y][x - 2] && cell === matrix[y][x - 3]) {
-                         counterRed ++
-                    }
-                    if (cell === matrix[y][x - 1] && cell === matrix[y][x + 1] && cell === matrix[y][x + 2]) {
-                         counterRed ++
-                    }
-                    if (cell === matrix[y][x - 2] && cell === matrix[y][x - 1] && cell === matrix[y][x + 1]) {
-                         counterRed ++
+          for (let x = 0; x < endOfColumn; x++) {
+               let posicao = matrix[y][x];
+               if (posicao !== 0) {
+                    if (posicao === matrix[y][x + 1] && posicao === matrix[y][x + 2] && posicao === matrix[y][x + 3]) {
+                         if (posicao === 1) {
+                              //TODO : Desabilitar a adição de novos discos;
+                              // Aparecer a mensagem de quem venceu;
+                              // posibilidade de resetar o jogo
+                              console.log('win Vermelho')
+                         } else {
+                              //TODO : Desabilitar a adição de novos discos;
+                              // Aparecer a mensagem de quem venceu;
+                              // posibilidade de resetar o jogo
+                              console.log('win Preto')
+                         }
                     }
                }
           }
      }
-     /* console.log(counterRed) */
-     return counterRed
 }
-redHorizontalVictory()
 
-function blackHorizontalVictory() {
-     let counterblack = 0
-     for (let y = 0; y < matrix.length; y++) {
-          for (let x = 0; x < edgeX; x++) {
-               let cell = matrix[y][x];
-               if (cell !== 0 && cell !== valorVermelho) {
-                    if (cell === matrix[y][x + 1] && cell === matrix[y][x + 2] && cell === matrix[y][x + 3]) {
-                         counterblack ++
-                    }
-                    if (cell === matrix[y][x - 1] && cell === matrix[y][x - 2] && cell === matrix[y][x - 3]) {
-                         counterblack ++
-                         console.log(counterblack)
-                    }
-                    if (cell === matrix[y][x - 1] && cell === matrix[y][x + 1] && cell === matrix[y][x + 2]) {
-                         counterblack ++
-                         console.log(counterblack)
-                    }
-                    if (cell === matrix[y][x - 2] && cell === matrix[y][x - 1] && cell === matrix[y][x + 1]) {
-                         counterblack ++
-                         console.log(counterblack)
-                    }
-               }
-          }
-     }
-     console.log(counterblack)
-     return counterblack
-}
-blackHorizontalVictory()
-
-function redVerticalVictory() {
-     let counterRed = 0
-     for (let y = 0; y < edgeY; y++) {
+function vitoriaVertical() {
+     for (let y = 0; y < endOfLine; y++) {
           for (let x = 0; x < matrix[0].length; x++) {
-               cell = matrix[y][x];
-               if (cell !== 0 && cell !== valorPreto) {
-                    if (cell === matrix[y + 1][x] && cell === matrix[y + 2][x] && cell === matrix[y + 3][x]) {
-                         counterRed ++
+               posicao = matrix[y][x];
+               if (posicao !== 0) {
+                    if (posicao === matrix[y + 1][x] && posicao === matrix[y + 2][x] && posicao === matrix[y + 3][x]) {
+                         if (posicao === 1) {
+                              console.log('vertical Vermelho Venceu')
+                         } else {
+                              console.log('vertical Preto Venceu')
+                         }
                     }
                }
           }
      }
-     console.log(counterRed)
 }
-redVerticalVictory()
 
+function vitoriaDiagonalDireita() {
+     for (let i = 0; i < endOfLine; i++) {
+          for (let j = 3; j < matrix[0].length; j++) {
+               let posicao = matrix[i][j]
+               if (posicao !== 0) {
+                    if (posicao === matrix[i + 1][j - 1] && posicao === matrix[i + 2][j - 2] &&
+                         posicao === matrix[i + 3][j - 3]) {
+                         if (posicao === 1) {
+                              console.log('vermelho venceu na diagonal')
+                         } else {
+                              console.log('prete venceu na diagonal')
+                         }
+                    }
+               }
+          }
 
+     }
+}
+
+function vitoriaDiagonalEsquerda() {
+     for (let i = 0; i < endOfLine; i++) {
+          for (let j = 0; j < endOfColumn; j++) {
+               let posicao = matrix[i][j]
+               if (posicao !== 0) {
+                    if (posicao === matrix[i + 1][j + 1] && posicao === matrix[i + 2][j + 2] &&
+                         posicao === matrix[i + 3][j + 3]) {
+                         if (posicao === 1) {
+                              console.log('vermelho venceu na diagonal')
+                         } else {
+                              console.log('prete venceu na diagonal')
+                         }
+                    }
+               }
+          }
+
+     }
+}

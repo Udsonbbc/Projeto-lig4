@@ -19,47 +19,58 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+html {
+    box-sizing: border-box;
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+ }
+
 body {
     width: 100%;
     font-size: 16px;
-    /* overflow: hidden; */
     font-family: Georgia, 'Times New Roman', Times, serif;
-    
 }
+
 h1{
     text-align: center;
-    font-size: 32px;
-    /* font-size: 62px; */
-}
-p{
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin: 1vw 0;
 }
 .inicio{
     text-align: center;
-    margin-top: 20px;
+    margin: 2vw 0;
 }
+.inicio > .jogar > button{
+    font-size: 1.2rem;
+}
+
 table, th, td {
     border: 1px solid rgb(2, 0, 73);
     border-collapse: collapse;
-    padding: 2.1vw;
   }
 
 td {
-    width: 8vw; 
-    height: 16vw;
+    width: 13vw; 
+    height: 21vw;
     text-align: center;
     vertical-align:  middle;
   }
 
 table {
-    margin: 1vw auto;
+    margin: 2vw auto;
     text-align: center;
 }
 
 .discos{
     display: flex;
-    flex-direction: inherit;
+    justify-content: center;
+    align-items: center;
     height: 50px;
+}
+
+.discos p {
+    margin: 0;
 }
 .vermelho{
 /* Eu tive que desativar as propriedades de margem pois com a configuração anterior os discos desconfiguravam as medidas da tabela.
@@ -69,9 +80,6 @@ Responsável pela alteração: Renan Nunes */
     width: 7vw; 
     height: 7vw;
     margin: 0 auto;
-    /* margin-right: 26vw;
-    margin-left: 34vw;
-    margin-top: 1vw; */
 }
 .preto{
     align-items: center;
