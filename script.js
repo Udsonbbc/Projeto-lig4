@@ -19,6 +19,7 @@ function reset() {
           [0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0]
      ]
+     document.querySelector('#ganhou').innerHTML = ''
 }
 
 function setGame() {
@@ -37,14 +38,18 @@ function setGame() {
           [0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0]
      ]
-     button.setAttribute('disabled', 'disabled')
-     document.querySelector('#ganhou').innerHTML = ''
-     button.textContent = 'Iniciar o jogo'
 }
 
 function remove() {
 
      let funcaoColuna = document.querySelectorAll('td');
+     for (let i = 0; i < funcaoColuna.length; i++) {
+          funcaoColuna[i].removeEventListener('click', addDisco);
+     }
+}
+function remover() {
+
+     let funcaoColuna = document.querySelectorAll('.coluna');
      for (let i = 0; i < funcaoColuna.length; i++) {
           funcaoColuna[i].removeEventListener('click', addDisco);
      }
@@ -105,11 +110,11 @@ function addDisco() {
                }
           }
      }
+     indicacao()
      vitoriaHorizontal()
      vitoriaVertical()
      vitoriaDiagonalDireita()
      vitoriaDiagonalEsquerda()
-     indicacao()
      empate()
 }
 
@@ -210,8 +215,7 @@ function empate() {
           && !vitoriaDiagonalDireita()
           && !vitoriaDiagonalEsquerda()) {
 
-          button.removeAttribute('disabled')
-          button.textContent = 'Reiniciar o jogo'
+          document.querySelector('.discos').innerHTML = ''
           let msg = document.createElement('p');
           msg.textContent = 'O Jogo empatou';
           msg.classList.add('empatou');
@@ -229,8 +233,6 @@ function vitoriaBlack() {
      local.appendChild(para)
      remove()
      valordeEmpate = true
-     button.removeAttribute('disabled')
-     button.textContent = 'Reiniciar o jogo'
      document.querySelector('.discos').innerHTML = ''
 }
 
@@ -245,7 +247,5 @@ function vitoriaRed() {
      local.appendChild(para)
      remove()
      valordeEmpate = true
-     button.removeAttribute('disabled')
-     button.textContent = 'Reiniciar o jogo'
      document.querySelector('.discos').innerHTML = ''
 }
