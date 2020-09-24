@@ -69,9 +69,6 @@ table {
     height: 50px;
 }
 
-.discos p {
-    margin: 0;
-}
 .vermelho{
 	border-radius: 50%;
     background:red; 
@@ -93,6 +90,32 @@ table {
     text-transform: uppercase;
     margin-top: 2vw;
     font-size: 2rem;
+}
+
+.msgVermelho {
+    display: flex;
+    justify-content: center;
+    margin: 2vw 0;
+    align-items: center;
+    background-color: red;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 50px;
+}
+
+.msgPreto{
+    display: flex;
+    justify-content: center;
+    margin: 2vw 0;
+    align-items: center;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 50px;
 }
 
 .animacao6 {

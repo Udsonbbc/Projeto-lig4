@@ -1,12 +1,29 @@
-//Evento de clique que irá iniciar o jogo, mostrando ao usuário os dois discos "Preto/Vermelho"
-//F: Modifiquei o evento de 'onclick' para 'addEventListener'
-button.addEventListener('click', setGame);
+document.querySelector('#button').addEventListener('click', setGame);
+document.querySelector('#reset').addEventListener('click', reset);
 
+function reset() {
+     let funcaoColuna = document.querySelectorAll('td');
+     for (let i = 0; i < funcaoColuna.length; i++) {
+          funcaoColuna[i].innerHTML = ''
+          funcaoColuna[i].addEventListener('click', addDisco);
+     }
+     let local = document.querySelector('.discos')
+     local.innerHTML = ''
+     isBlack = false
+     indicacao()
+     matrix = [
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0]
+     ]
+}
 
-//F: Adicionei uma classe para todos os quadrados da tabela e para elas distribui a função de adicionar a peça do jogo
 function setGame() {
 
-     let funcaoColuna = document.querySelectorAll('.coluna');
+     let funcaoColuna = document.querySelectorAll('td');
      for (let i = 0; i < funcaoColuna.length; i++) {
           funcaoColuna[i].innerHTML = ''
           funcaoColuna[i].addEventListener('click', addDisco);
@@ -25,42 +42,38 @@ function setGame() {
      button.textContent = 'Iniciar o jogo'
 }
 
-//TODO: Continuar a função que irá indicar qual peça está sendo colocada.
+function remove() {
+
+     let funcaoColuna = document.querySelectorAll('td');
+     for (let i = 0; i < funcaoColuna.length; i++) {
+          funcaoColuna[i].removeEventListener('click', addDisco);
+     }
+}
+
 function indicacao() {
      if (!isBlack) {
           let local = document.querySelector('.discos')
           local.innerHTML = ''
           let para = document.createElement('p')
-          local.appendChild(para)
           para.textContent = 'Jogador Vermelho'
-          local.style.margin = '2vw 0'
-          local.style.backgroundColor = 'red'
-          local.style.color = 'white'
-          local.style.textTransform = 'uppercase'
-          local.style.fontSize = '1.5rem'
+          para.classList.add('msgVermelho')
+          local.appendChild(para)
      } else {
           let local = document.querySelector('.discos')
           local.innerHTML = ''
           let para = document.createElement('p')
-          local.appendChild(para)
           para.textContent = 'Jogador Preto'
-          local.style.margin = '2vw 0'
-          local.style.backgroundColor = 'black'
-          local.style.color = 'white'
-          local.style.textTransform = 'uppercase'
-          local.style.fontSize = '1.5rem'
+          para.classList.add('msgPreto')
+          local.appendChild(para)
      }
 }
 
 let redValue = 1
 let blackValue = 2
-let isBlack = false //F: Esta variável faz com que decida qual peça está jogando, e ao final do turno troca de jogador
-//F: A função pega a primeira classe do quadrado clicado, que representa a sua coluna e verifica a partir da linha se já há
-//algumas "peça" nela (hasChildNodes), caso não tenha ela insere o disco, troca de jogador e termina a função
-//caso contrário, se tiver, ela verifica a próxima linha
+let isBlack = false
+
 function addDisco() {
-     let parentClass = this.className
-     let firstClass = parentClass.split(' ')[0]
+     let firstClass = this.className
      if (!isBlack) {
           for (let line = 6; line >= 0; line--) {
                if (document.querySelector(`#${firstClass}L${line}`).hasChildNodes()) {
@@ -120,17 +133,9 @@ function vitoriaHorizontal() {
                if (posicao !== 0) {
                     if (posicao === matrix[y][x + 1] && posicao === matrix[y][x + 2] && posicao === matrix[y][x + 3]) {
                          if (posicao === 1) {
-                              //TODO : Desabilitar a adição de novos discos;
-                              // Aparecer a mensagem de quem venceu;
-                              // posibilidade de resetar o jogo
-                              console.log('win Vermelho')
-                              valordeEmpate = true
+                              vitoriaRed()
                          } else {
-                              //TODO : Desabilitar a adição de novos discos;
-                              // Aparecer a mensagem de quem venceu;
-                              // posibilidade de resetar o jogo
-                              console.log('win Preto')
-                              valordeEmpate = true
+                              vitoriaBlack()
                          }
                     }
                }
@@ -146,11 +151,9 @@ function vitoriaVertical() {
                if (posicao !== 0) {
                     if (posicao === matrix[y + 1][x] && posicao === matrix[y + 2][x] && posicao === matrix[y + 3][x]) {
                          if (posicao === 1) {
-                              console.log('vertical Vermelho Venceu')
-                              valordeEmpate = true
+                              vitoriaRed()
                          } else {
-                              console.log('vertical Preto Venceu')
-                              valordeEmpate = true
+                              vitoriaBlack()
                          }
                     }
                }
@@ -167,11 +170,9 @@ function vitoriaDiagonalDireita() {
                     if (posicao === matrix[i + 1][j - 1] && posicao === matrix[i + 2][j - 2] &&
                          posicao === matrix[i + 3][j - 3]) {
                          if (posicao === 1) {
-                              console.log('vermelho venceu na diagonal')
-                              valordeEmpate = true
+                              vitoriaRed()
                          } else {
-                              console.log('prete venceu na diagonal')
-                              valordeEmpate = true
+                              vitoriaBlack()
                          }
                     }
                }
@@ -189,11 +190,9 @@ function vitoriaDiagonalEsquerda() {
                     if (posicao === matrix[i + 1][j + 1] && posicao === matrix[i + 2][j + 2] &&
                          posicao === matrix[i + 3][j + 3]) {
                          if (posicao === 1) {
-                              console.log('vermelho venceu na diagonal')
-                              valordeEmpate = true
+                              vitoriaRed()
                          } else {
-                              console.log('prete venceu na diagonal')
-                              valordeEmpate = true
+                              vitoriaBlack()
                          }
                     }
                }
@@ -217,10 +216,36 @@ function empate() {
           msg.textContent = 'O Jogo empatou';
           msg.classList.add('empatou');
           document.querySelector('#ganhou').appendChild(msg)
-
-          jogavel = document.querySelectorAll('.coluna')
-          for (let i = 0; i < jogavel.length; i++) {
-               jogavel[i].removeEventListener('click', addDisco)
-          }
+          remove()
      }
+}
+
+function vitoriaBlack() {
+     local = document.getElementById('ganhou')
+     local.innerHTML = ''
+     para = document.createElement('p')
+     para.textContent = 'Jogador Preto Ganhou'
+     para.classList.add('msgPreto')
+     local.appendChild(para)
+     remove()
+     valordeEmpate = true
+     button.removeAttribute('disabled')
+     button.textContent = 'Reiniciar o jogo'
+     document.querySelector('.discos').innerHTML = ''
+}
+
+
+
+function vitoriaRed() {
+     local = document.getElementById('ganhou')
+     local.innerHTML = ''
+     para = document.createElement('p')
+     para.textContent = 'Jogador Vermelho Ganhou'
+     para.classList.add('msgVermelho')
+     local.appendChild(para)
+     remove()
+     valordeEmpate = true
+     button.removeAttribute('disabled')
+     button.textContent = 'Reiniciar o jogo'
+     document.querySelector('.discos').innerHTML = ''
 }
