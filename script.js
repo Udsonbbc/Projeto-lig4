@@ -119,7 +119,7 @@ function vitoriaHorizontal() {
                               // Aparecer a mensagem de quem venceu;
                               // posibilidade de resetar o jogo  
                               vitoriaRed()         
-                              reset()
+                              
                          } else {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
