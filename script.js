@@ -58,17 +58,17 @@ let isBlack = false //F: Esta variável faz com que decida qual peça está joga
 //algumas "peça" nela (hasChildNodes), caso não tenha ela insere o disco, troca de jogador e termina a função
 //caso contrário, se tiver, ela verifica a próxima linha
 function addDisco(x) {
-     let parentClass = this.className
-     let firstClass = parentClass.split(' ')[0]
+
+     let firstClass = this.className.split(' ')[0] //Pega apenas a primeira Classe do click
      if (!isBlack) {
-          for (let line = 6; line >= 0; line--) {
+          for (let line = 6; line >= 0; line--) {//Verifica se tem disco dentro
                if (document.querySelector(`#${firstClass}L${line}`).hasChildNodes()) {
                     continue
                } else {
                     let discoVermelho = document.createElement('div');
                     discoVermelho.className = 'vermelho'
                     document.querySelector(`#${firstClass}L${line}`).appendChild(discoVermelho);
-                    let valueOfColumn = Number(firstClass.split('')[1])
+                    let valueOfColumn = Number(firstClass.split('')[1])// Separa o C do 1, por exemplo e pega o numero
                     matrix[line - 1][valueOfColumn - 1] = redValue
                     isBlack = true
                     break
