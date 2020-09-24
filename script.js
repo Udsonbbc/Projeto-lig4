@@ -107,13 +107,15 @@ function vitoriaHorizontal() {
                          if (posicao === 1) {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
-                              // posibilidade de resetar o jogo
-                              console.log('win Vermelho')
+                              // posibilidade de resetar o jogo  
+                              vitoriaRed()     
+                                     
+                              
                          } else {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
                               // posibilidade de resetar o jogo
-                              console.log('win Preto')
+                              vitoriaBlack() 
                          }
                     }
                }
@@ -128,9 +130,9 @@ function vitoriaVertical() {
                if (posicao !== 0) {
                     if (posicao === matrix[y + 1][x] && posicao === matrix[y + 2][x] && posicao === matrix[y + 3][x]) {
                          if (posicao === 1) {
-                              console.log('vertical Vermelho Venceu')
+                              vitoriaRed() 
                          } else {
-                              console.log('vertical Preto Venceu')
+                              vitoriaBlack()   
                          }
                     }
                }
@@ -146,9 +148,10 @@ function vitoriaDiagonalDireita() {
                     if (posicao === matrix[i + 1][j - 1] && posicao === matrix[i + 2][j - 2] &&
                          posicao === matrix[i + 3][j - 3]) {
                          if (posicao === 1) {
-                              console.log('vermelho venceu na diagonal')
-                         } else {
-                              console.log('prete venceu na diagonal')
+                              vitoriaRed() 
+                               
+                         } else {      
+                              vitoriaBlack()
                          }
                     }
                }
@@ -165,9 +168,9 @@ function vitoriaDiagonalEsquerda() {
                     if (posicao === matrix[i + 1][j + 1] && posicao === matrix[i + 2][j + 2] &&
                          posicao === matrix[i + 3][j + 3]) {
                          if (posicao === 1) {
-                              console.log('vermelho venceu na diagonal')
+                              vitoriaRed() 
                          } else {
-                              console.log('prete venceu na diagonal')
+                              vitoriaBlack() 
                          }
                     }
                }
@@ -175,3 +178,35 @@ function vitoriaDiagonalEsquerda() {
 
      }
 }
+
+function vitoriaBlack(){
+     local = document.getElementById('ganhou')
+     local.innerHTML = ''
+     para = document.createElement('p')
+     local.appendChild(para)
+     para.textContent = 'Jogador Preto Ganhou'
+     local.style.margin = '2vw 0'
+     local.style.backgroundColor = 'Black'
+     local.style.color = 'white'
+     local.style.textTransform = 'uppercase'
+     local.style.fontSize = '1.5rem'
+    }
+
+
+
+function vitoriaRed(){
+     local = document.getElementById('ganhou')
+     local.innerHTML = ''
+     para = document.createElement('p')
+     local.appendChild(para)
+     para.textContent = 'Jogador Vermelho Ganhou'
+     local.style.margin = '2vw 0'
+     local.style.backgroundColor = 'Red'
+     local.style.color = 'white'
+     local.style.textTransform = 'uppercase'
+     local.style.fontSize = '1.5rem'
+}
+
+ function reset (){
+     document.location.reload(true)
+ }
