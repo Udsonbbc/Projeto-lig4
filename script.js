@@ -1,6 +1,9 @@
 //Evento de clique que irá iniciar o jogo, mostrando ao usuário os dois discos "Preto/Vermelho"
 //F: Modifiquei o evento de 'onclick' para 'addEventListener'
 button.addEventListener('click', setGame);
+buttonreset.addEventListener('click', reset);
+
+
 
 
 //F: Adicionei uma classe para todos os quadrados da tabela e para elas distribui a função de adicionar a peça do jogo
@@ -12,6 +15,13 @@ function setGame() {
           funcaoColuna[i].addEventListener('click', addDisco);
      }
      indicacao()
+}
+function remover() {
+
+     let funcaoColuna = document.querySelectorAll('.coluna');
+     for (let i = 0; i < funcaoColuna.length; i++) {
+          funcaoColuna[i].removeEventListener('click', addDisco);
+     }
 }
 
 //TODO: Continuar a função que irá indicar qual peça está sendo colocada.
@@ -47,7 +57,7 @@ let isBlack = false //F: Esta variável faz com que decida qual peça está joga
 //F: A função pega a primeira classe do quadrado clicado, que representa a sua coluna e verifica a partir da linha se já há
 //algumas "peça" nela (hasChildNodes), caso não tenha ela insere o disco, troca de jogador e termina a função
 //caso contrário, se tiver, ela verifica a próxima linha
-function addDisco() {
+function addDisco(x) {
      let parentClass = this.className
      let firstClass = parentClass.split(' ')[0]
      if (!isBlack) {
@@ -108,9 +118,8 @@ function vitoriaHorizontal() {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
                               // posibilidade de resetar o jogo  
-                              vitoriaRed()     
-                                     
-                              
+                              vitoriaRed()         
+                              reset()
                          } else {
                               //TODO : Desabilitar a adição de novos discos;
                               // Aparecer a mensagem de quem venceu;
@@ -168,7 +177,8 @@ function vitoriaDiagonalEsquerda() {
                     if (posicao === matrix[i + 1][j + 1] && posicao === matrix[i + 2][j + 2] &&
                          posicao === matrix[i + 3][j + 3]) {
                          if (posicao === 1) {
-                              vitoriaRed() 
+                              vitoriaRed()
+
                          } else {
                               vitoriaBlack() 
                          }
@@ -190,6 +200,7 @@ function vitoriaBlack(){
      local.style.color = 'white'
      local.style.textTransform = 'uppercase'
      local.style.fontSize = '1.5rem'
+     remover()
     }
 
 
@@ -205,6 +216,7 @@ function vitoriaRed(){
      local.style.color = 'white'
      local.style.textTransform = 'uppercase'
      local.style.fontSize = '1.5rem'
+     remover()
 }
 
  function reset (){

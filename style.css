@@ -44,6 +44,10 @@ h1{
 .inicio > .jogar > button{
     font-size: 1.2rem;
 }
+.inicio > .reset > button{
+    font-size: 1.2rem;
+    margin-top: 2vw;
+}
 
 table, th, td {
     border: 1px solid rgb(2, 0, 73);
@@ -90,12 +94,3 @@ Responsável pela alteração: Renan Nunes */
     margin: 0 auto;
 }
 
-#ganhou {
-    top:40%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    color: rgb(201, 15, 15);
-    position: absolute;
-    font-size: 8rem;
-    background-image: url(campeão-na-vida.jpg);
-}
