@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lig-4</title>
     <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+  
+
     <!--Título inicial do jogo-->
-    <h1>Lig-4</h1>
+    <h1 class="title">L <span class="letter">I </span>G <span class="letter">- </span>4</h1>
 
     <!--Seção onde serão colocados os botões para início da interação do usuário com o jogo-->
     <section class="inicio">
         <div class="jogar">
-            <button id='button'>Iniciar o Jogo</button>
+            <button id='start'>Iniciar o Jogo</button>
+            <div id='ganhou'></div>
+            <div class="discos"> 
+            </div>
           <button id='reset'>Resetar</button>
       </div>
     </section>
 
-    <!--Criação dos discos com as devidas identificações para que apareçam na tela apenas quando o usuário clicar no botão "Jogar"-->
-    <section class="discos"> 
-    </section>
-
-    <!--Criação da Tabela já com a colunas identificadas, para qua sejam chamadas de acordo com cada clique do usuário, que acontecerá nas devidas colunas, durante o jogo -->
     <div class="tabela">
         <table>
             <tr class="ultimaLinha">
@@ -81,9 +82,8 @@
             </tr>
         </table>
     </div>
+  </div>
 
-    <!--Mensagem de vitória, que será mostrada ao usuário quando o mesmo conseguir finalizar o jogo com sucesso-->
-    <div id='ganhou'></div>
     <script src="script.js"></script>
     
 </body>

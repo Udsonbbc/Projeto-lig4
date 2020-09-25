@@ -1,125 +1,261 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 html {
     box-sizing: border-box;
 }
-  *, *:before, *:after {
+
+*, *:before, *:after {
     box-sizing: inherit;
- }
+}
 
 body {
     width: 100%;
+    height: 100vh;
     font-size: 16px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Press Start 2P', cursive;
+    background-image: url("/home/renan/Documentos/lig4/bcgrd1.jpg");
+    background-size: cover;
+    background-repeat: round;
+    background-color: #333;
 }
 
-h1{
+@font-face {
+    src: url('PressStart2P-Regular.ttf');
+    font-family: Neon;
+}
+
+@keyframes on-off {
+    from {
+        color: #333;
+        text-shadow: none;
+    }
+    12% {
+        color: yellow;
+        text-shadow: 0px 0px 7px yellow;
+    }
+    14% {
+        color: #333;
+        text-shadow: none;
+    }
+    20% {
+        color: yellow;
+        text-shadow: 0px 0px 7px yellow;
+    }
+    22% {
+        color: #333;
+        text-shadow: none;
+    }
+    35% {
+        color: yellow;
+        text-shadow: 0px 0px 7px yellow;
+    }
+    to {
+        color: #333
+    }
+}
+
+#start {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    font-family: Neon;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    background-image: -webkit-linear-gradient(top, #4BF63D, #D0BD1E);
+    background-image: -moz-linear-gradient(top, #4BF63D, #D0BD1E);
+    background-image: -ms-linear-gradient(top, #4BF63D, #D0BD1E);
+    background-image: -o-linear-gradient(top, #4BF63D, #D0BD1E);
+    background-image: linear-gradient(to bottom, #4BF63D, #D0BD1E);
+    color: #FFFFFF;
+    box-shadow: 1px 1px 20px 0px #99C624;
+    -webkit-box-shadow: 1px 1px 20px 0px #99C624;
+    -moz-box-shadow: 1px 1px 20px 0px #99C624;
+    text-shadow: 1px 1px 20px #FFAE00;
+    cursor: pointer;
+    opacity: 80%;
+}
+
+#start:hover {
+    background: #D0581E;
+    background-image: -webkit-linear-gradient(top, #D0581E, #F63D60);
+    background-image: -moz-linear-gradient(top, #D0581E, #F63D60);
+    background-image: -ms-linear-gradient(top, #D0581E, #F63D60);
+    background-image: -o-linear-gradient(top, #D0581E, #F63D60);
+    background-image: linear-gradient(to bottom, #D0581E, #F63D60);
+    border: 1px solid red
+}
+
+#reset {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    font-family: Neon;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    background-image: -webkit-linear-gradient(top, #F31D07, #D0AC1E);
+    background-image: -moz-linear-gradient(top, #F31D07, #D0AC1E);
+    background-image: -ms-linear-gradient(top, #F31D07, #D0AC1E);
+    background-image: -o-linear-gradient(top, #F31D07, #D0AC1E);
+    background-image: linear-gradient(to bottom, #F31D07, #D0AC1E);
+    color: #FFFFFF;
+    box-shadow: 1px 1px 20px 0px #D0581E;
+    -webkit-box-shadow: 1px 1px 20px 0px #D0581E;
+    -moz-box-shadow: 1px 1px 20px 0px #D0581E;
+    text-shadow: 1px 1px 20px #FFAE00;
+    cursor: pointer;
+    opacity: 80%;
+}
+
+#reset:hover {
+    background: #2CD01E;
+    background-image: -webkit-linear-gradient(top, #2CD01E, #F6EA3D);
+    background-image: -moz-linear-gradient(top, #2CD01E, #F6EA3D);
+    background-image: -ms-linear-gradient(top, #2CD01E, #F6EA3D);
+    background-image: -o-linear-gradient(top, #2CD01E, #F6EA3D);
+    background-image: linear-gradient(to bottom, #2CD01E, #F6EA3D);
+    border: 1px solid red;
+}
+
+.title {
+    margin-top: 50px;
     text-align: center;
     font-size: 2rem;
-    margin: 1vw 0;
+    color: #ff0;
+    text-shadow: 0px 0px 7px #ff0;
+    padding: 0.25rem;
+    font-family: Neon;
+    animation: on-off 4s steps(1) infinite;
+    opacity: 80%;
 }
-.inicio{
+
+.letter {
+    animation: on-off 8s steps(1) infinite;
+}
+
+.inicio {
     text-align: center;
     margin: 2vw 0;
 }
-.inicio > .jogar > button{
+
+.jogar {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.inicio>.jogar>button {
     font-size: 1.2rem;
 }
-.inicio > .reset > button{
+
+.inicio>.reset>button {
     font-size: 1.2rem;
     margin-top: 2vw;
 }
 
 table, th, td {
-    border: 1px solid rgb(2, 0, 73);
+    border: 3px solid rgb(255, 255, 51);
     border-collapse: collapse;
-  }
+
+}
 
 td {
-    width: 13vw; 
+    width: 13vw;
     height: 21vw;
     text-align: center;
-    vertical-align:  middle;
-  }
+    vertical-align: middle;
+}
 
 table {
     margin: 2vw auto;
     text-align: center;
+    opacity: 95%;
 }
 
-.discos{
+.discos {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
 }
 
-.vermelho{
-	border-radius: 50%;
-    background:red; 
-    width: 10vw; 
+.vermelho {
+    border-radius: 50%;
+    background: red;
+    width: 10vw;
     height: 10vw;
     margin: 0 auto;
 }
-.preto{
+
+.preto {
     align-items: center;
-	border-radius: 50%;
-    background: black; 
-    width: 10vw; 
+    border-radius: 50%;
+    background: black;
+    width: 10vw;
     height: 10vw;
     margin: 0 auto;
 }
 
 .empatou {
+    display: flex;
+    justify-content: center;
     text-align: center;
+    align-items: center;
+    background-color: blueviolet;
+    color: white;
     text-transform: uppercase;
-    margin-top: 2vw;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    width: 180px;
+    height: 70px;
+    border: 1px solid;
+    border-radius: 10px;
+    opacity: 70%;
+    animation: on-off 4s steps(1) infinite;
 }
 
 .msgVermelho {
     display: flex;
     justify-content: center;
-    margin: 2vw 0;
+    text-align: center;
     align-items: center;
     background-color: red;
     color: white;
     text-transform: uppercase;
     font-size: 1.2rem;
-    width: 100%;
-    height: 50px;
+    width: 180px;
+    height: 70px;
+    border: 1px solid;
+    border-radius: 10px;
+    opacity: 70%;
+    animation: on-off 4s steps(1) infinite;
 }
 
-.msgPreto{
+.msgPreto {
     display: flex;
     justify-content: center;
-    margin: 2vw 0;
+    text-align: center;
     align-items: center;
     background-color: black;
     color: white;
     text-transform: uppercase;
     font-size: 1.2rem;
-    width: 100%;
-    height: 50px;
+    width: 180px;
+    height: 70px;
+    border: 1px solid;
+    border-radius: 10px;
+    opacity: 70%;
+    animation: on-off 4s steps(1) infinite;
 }
 
 .animacao6 {
@@ -130,15 +266,33 @@ table {
 }
 
 @keyframes example6 {
-    0% {bottom:126vw;}
-    66% {bottom: 0;}
-    70% {bottom: 10vw;}
-    75% {bottom: 0;}
-    80% {bottom: 8vw;}
-    85% {bottom: 0vw;}
-    90% {bottom: 4vw;}
-    95% {bottom: 0vw;}
-    100% {bottom: 0}
+    0% {
+        bottom: 126vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 10vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 8vw;
+    }
+    85% {
+        bottom: 0vw;
+    }
+    90% {
+        bottom: 4vw;
+    }
+    95% {
+        bottom: 0vw;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 .animacao5 {
@@ -149,15 +303,33 @@ table {
 }
 
 @keyframes example5 {
-    0% {bottom:105vw;}
-    66% {bottom: 0;}
-    70% {bottom: 10vw;}
-    75% {bottom: 0;}
-    80% {bottom: 8vw;}
-    85% {bottom: 0vw;}
-    90% {bottom: 4vw;}
-    95% {bottom: 0vw;}
-    100% {bottom: 0}
+    0% {
+        bottom: 105vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 10vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 8vw;
+    }
+    85% {
+        bottom: 0vw;
+    }
+    90% {
+        bottom: 4vw;
+    }
+    95% {
+        bottom: 0vw;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 .animacao4 {
@@ -168,15 +340,33 @@ table {
 }
 
 @keyframes example4 {
-    0% {bottom:84vw;}
-    66% {bottom: 0;}
-    70% {bottom: 10vw;}
-    75% {bottom: 0;}
-    80% {bottom: 8vw;}
-    85% {bottom: 0vw;}
-    90% {bottom: 4vw;}
-    95% {bottom: 0vw;}
-    100% {bottom: 0}
+    0% {
+        bottom: 84vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 10vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 8vw;
+    }
+    85% {
+        bottom: 0vw;
+    }
+    90% {
+        bottom: 4vw;
+    }
+    95% {
+        bottom: 0vw;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 .animacao3 {
@@ -187,15 +377,33 @@ table {
 }
 
 @keyframes example3 {
-    0% {bottom:63vw;}
-    66% {bottom: 0;}
-    70% {bottom: 10vw;}
-    75% {bottom: 0;}
-    80% {bottom: 8vw;}
-    85% {bottom: 0vw;}
-    90% {bottom: 4vw;}
-    95% {bottom: 0vw;}
-    100% {bottom: 0}
+    0% {
+        bottom: 63vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 10vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 8vw;
+    }
+    85% {
+        bottom: 0vw;
+    }
+    90% {
+        bottom: 4vw;
+    }
+    95% {
+        bottom: 0vw;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 .animacao2 {
@@ -206,15 +414,33 @@ table {
 }
 
 @keyframes example2 {
-    0% {bottom:42vw;}
-    66% {bottom: 0;}
-    70% {bottom: 10vw;}
-    75% {bottom: 0;}
-    80% {bottom: 8vw;}
-    85% {bottom: 0vw;}
-    90% {bottom: 4vw;}
-    95% {bottom: 0vw;}
-    100% {bottom: 0}
+    0% {
+        bottom: 42vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 10vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 8vw;
+    }
+    85% {
+        bottom: 0vw;
+    }
+    90% {
+        bottom: 4vw;
+    }
+    95% {
+        bottom: 0vw;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 .animacao1 {
@@ -225,99 +451,224 @@ table {
 }
 
 @keyframes example1 {
-    0% {bottom:21vw;}
-    66% {bottom: 0;}
-    70% {bottom: 5vw;}
-    75% {bottom: 0;}
-    80% {bottom: 4vw;}
-    85% {bottom: 0;}
-    90% {bottom: 2vw;}
-    95% {bottom: 0;}
-    100% {bottom: 0}
+    0% {
+        bottom: 21vw;
+    }
+    66% {
+        bottom: 0;
+    }
+    70% {
+        bottom: 5vw;
+    }
+    75% {
+        bottom: 0;
+    }
+    80% {
+        bottom: 4vw;
+    }
+    85% {
+        bottom: 0;
+    }
+    90% {
+        bottom: 2vw;
+    }
+    95% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 0
+    }
 }
 
 @media only screen and (min-width: 768px) {
-    td {
-        height: 100px;
-        width: 100px;
+    .title {
+        font-size: 4rem;
     }
 
+    td {
+        height: 80px;
+        width: 100px;
+    }
+    .jogar {
+        width: 420px;
+        margin-top: 80px;
+    }
     .vermelho, .preto {
         height: 80px;
         width: 80px;
     }
-
     @keyframes example6 {
-        0% {bottom: 600px;}
-        66% {bottom: 0;}
-        70% {bottom: 50px}
-        75% {bottom: 0;}
-        80% {bottom: 25px;}
-        85% {bottom: 0;}
-        90% {bottom: 12px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 600px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 50px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 25px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 12px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
     @keyframes example5 {
-        0% {bottom: 500px;}
-        66% {bottom: 0;}
-        70% {bottom: 50px}
-        75% {bottom: 0;}
-        80% {bottom: 25px;}
-        85% {bottom: 0;}
-        90% {bottom: 12px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 500px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 50px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 25px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 12px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
     @keyframes example4 {
-        0% {bottom: 400px;}
-        66% {bottom: 0;}
-        70% {bottom: 50px}
-        75% {bottom: 0;}
-        80% {bottom: 25px;}
-        85% {bottom: 0;}
-        90% {bottom: 12px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 400px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 50px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 25px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 12px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
     @keyframes example3 {
-        0% {bottom: 300px;}
-        66% {bottom: 0;}
-        70% {bottom: 50px}
-        75% {bottom: 0;}
-        80% {bottom: 25px;}
-        85% {bottom: 0;}
-        90% {bottom: 12px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 300px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 50px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 25px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 12px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
     @keyframes example2 {
-        0% {bottom: 200px;}
-        66% {bottom: 0;}
-        70% {bottom: 50px}
-        75% {bottom: 0;}
-        80% {bottom: 25px;}
-        85% {bottom: 0;}
-        90% {bottom: 12px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 200px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 50px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 25px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 12px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
     @keyframes example1 {
-        0% {bottom: 100px;}
-        66% {bottom: 0;}
-        70% {bottom: 25px}
-        75% {bottom: 0;}
-        80% {bottom: 12px;}
-        85% {bottom: 0;}
-        90% {bottom: 6px;}
-        95% {bottom: 0;}
-        100% {bottom: 0}
+        0% {
+            bottom: 100px;
+        }
+        66% {
+            bottom: 0;
+        }
+        70% {
+            bottom: 25px
+        }
+        75% {
+            bottom: 0;
+        }
+        80% {
+            bottom: 12px;
+        }
+        85% {
+            bottom: 0;
+        }
+        90% {
+            bottom: 6px;
+        }
+        95% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 0
+        }
     }
-
-
 }

@@ -1,25 +1,8 @@
-document.querySelector('#button').addEventListener('click', setGame);
+document.querySelector('#start').addEventListener('click', setGame);
 document.querySelector('#reset').addEventListener('click', reset);
 
 function reset() {
-     let funcaoColuna = document.querySelectorAll('td');
-     for (let i = 0; i < funcaoColuna.length; i++) {
-          funcaoColuna[i].innerHTML = ''
-          funcaoColuna[i].addEventListener('click', addDisco);
-     }
-     let local = document.querySelector('.discos')
-     local.innerHTML = ''
-     isBlack = false
-     indicacao()
-     matrix = [
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0]
-     ]
-     document.querySelector('#ganhou').innerHTML = ''
+     document.location.reload(true)
 }
 
 function setGame() {
