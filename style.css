@@ -225,10 +225,10 @@ table {
     margin: 0 auto;
 }
 
-.preto {
+.azul {
     align-items: center;
     border-radius: 50%;
-    background: black;
+    background: rgb(8, 10, 163);
     width: 10vw;
     height: 10vw;
     margin: 0 auto;
@@ -268,12 +268,12 @@ table {
     animation: on-off 4s steps(1) infinite;
 }
 
-.msgPreto {
+.msgAzul{
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    background-color: black;
+    background-color:rgb(8, 10, 163);
     color: white;
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -520,7 +520,7 @@ table {
         width: 420px;
         margin-top: 80px;
     }
-    .vermelho, .preto {
+    .vermelho, .azul {
         height: 70px;
         width: 70px;
     }

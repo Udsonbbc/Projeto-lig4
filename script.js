@@ -27,15 +27,15 @@ function setGame() {
 }
 
 let vitoriaVermelho = 0
-let vitoriaPreto = 0
+let vitoriaAzul = 0
 
 function placar() {
      let placarVermelho = document.querySelector('.placarVermelho')
-     let placarPreto = document.querySelector('.placarPreto')
+     let placarAzul = document.querySelector('.placarAzul')
      placarVermelho.innerHTML = ''
      placarVermelho.textContent = vitoriaVermelho
-     placarPreto.innerHTML = ''
-     placarPreto.textContent = vitoriaPreto
+     placarAzul.innerHTML = ''
+     placarAzul.textContent = vitoriaAzul
 }
 
 function remove() {
@@ -65,8 +65,8 @@ function indicacao() {
           let local = document.querySelector('.discos')
           local.innerHTML = ''
           let para = document.createElement('p')
-          para.textContent = 'Jogador Preto'
-          para.classList.add('msgPreto')
+          para.textContent = 'Jogador Azul'
+          para.classList.add('msgAzul')
           local.appendChild(para)
      }
 }
@@ -97,10 +97,10 @@ function addDisco() {
                if (document.querySelector(`#${firstClass}L${line}`).hasChildNodes()) {
                     continue
                } else {
-                    let discoPreto = document.createElement('div');
-                    discoPreto.className = 'preto'
-                    document.querySelector(`#${firstClass}L${line}`).appendChild(discoPreto);
-                    discoPreto.classList.add(`animacao${line}`)
+                    let discoAzul = document.createElement('div');
+                    discoAzul.className = 'azul'
+                    document.querySelector(`#${firstClass}L${line}`).appendChild(discoAzul);
+                    discoAzul.classList.add(`animacao${line}`)
                     let valueOfColumn = Number(firstClass.split('')[1])
                     matrix[line - 1][valueOfColumn - 1] = blackValue
                     isBlack = false
@@ -228,13 +228,13 @@ function vitoriaBlack() {
      local = document.getElementById('ganhou')
      local.innerHTML = ''
      para = document.createElement('p')
-     para.textContent = 'Jogador Preto Ganhou'
-     para.classList.add('msgPreto')
+     para.textContent = 'Jogador Azul Ganhou'
+     para.classList.add('msgAzul')
      local.appendChild(para)
      remove()
      valordeEmpate = true
      document.querySelector('.discos').innerHTML = ''
-     vitoriaPreto++
+     vitoriaAzul++
      document.querySelector('#start').textContent = 'Continuar o jogo?'
 }
 
