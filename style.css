@@ -66,7 +66,7 @@ body {
     height: 80px;
     border-radius: 100%;
     font-family: Neon;
-    font-size: 10px;
+    font-size: 0.5rem;
     text-align: center;
     padding: 5px;
     border: none;
@@ -190,6 +190,33 @@ table {
     height: 50px;
 }
 
+.placar {
+    display: flex;
+    width: 92%;
+    margin: 1vw auto;
+    justify-content: space-between;
+}
+
+.placar>p {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.placar>p:last-child {
+    color: white;
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 0.8rem;
+}
+
+.placarVermelho {
+    color: red;
+}
+
+.placarPreto {
+    color: white;
+}
+
 .vermelho {
     border-radius: 50%;
     background: red;
@@ -232,8 +259,8 @@ table {
     background-color: red;
     color: white;
     text-transform: uppercase;
-    font-size: 1.2rem;
-    width: 180px;
+    font-size: 1.1rem;
+    width: 150px;
     height: 70px;
     border: 1px solid;
     border-radius: 10px;
@@ -249,8 +276,8 @@ table {
     background-color: black;
     color: white;
     text-transform: uppercase;
-    font-size: 1.2rem;
-    width: 180px;
+    font-size: 1.1rem;
+    width: 150px;
     height: 70px;
     border: 1px solid;
     border-radius: 10px;
@@ -494,9 +521,14 @@ table {
         margin-top: 80px;
     }
     .vermelho, .preto {
-        height: 80px;
-        width: 80px;
+        height: 70px;
+        width: 70px;
     }
+
+    .placar {
+        width: 700px;
+    }
+
     @keyframes example6 {
         0% {
             bottom: 600px;

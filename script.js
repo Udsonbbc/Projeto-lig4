@@ -12,7 +12,7 @@ function setGame() {
           funcaoColuna[i].innerHTML = ''
           funcaoColuna[i].addEventListener('click', addDisco);
      }
-     indicacao()
+     document.querySelector('#ganhou').innerHTML = ''
      matrix = [
           [0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0],
@@ -21,6 +21,21 @@ function setGame() {
           [0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0]
      ]
+     isBlack = false
+     indicacao()
+     document.querySelector('#start').textContent = 'Iniciar o jogo'
+}
+
+let vitoriaVermelho = 0
+let vitoriaPreto = 0
+
+function placar() {
+     let placarVermelho = document.querySelector('.placarVermelho')
+     let placarPreto = document.querySelector('.placarPreto')
+     placarVermelho.innerHTML = ''
+     placarVermelho.textContent = vitoriaVermelho
+     placarPreto.innerHTML = ''
+     placarPreto.textContent = vitoriaPreto
 }
 
 function remove() {
@@ -99,6 +114,7 @@ function addDisco() {
      vitoriaDiagonalDireita()
      vitoriaDiagonalEsquerda()
      empate()
+     placar()
 }
 
 let matrix = [
@@ -204,6 +220,7 @@ function empate() {
           msg.classList.add('empatou');
           document.querySelector('#ganhou').appendChild(msg)
           remove()
+          document.querySelector('#start').textContent = 'Continuar o jogo?'
      }
 }
 
@@ -217,6 +234,8 @@ function vitoriaBlack() {
      remove()
      valordeEmpate = true
      document.querySelector('.discos').innerHTML = ''
+     vitoriaPreto++
+     document.querySelector('#start').textContent = 'Continuar o jogo?'
 }
 
 
@@ -231,4 +250,6 @@ function vitoriaRed() {
      remove()
      valordeEmpate = true
      document.querySelector('.discos').innerHTML = ''
+     vitoriaVermelho++
+     document.querySelector('#start').textContent = 'Continuar o jogo?'
 }
