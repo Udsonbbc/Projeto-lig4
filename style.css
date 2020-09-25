@@ -20,7 +20,7 @@ body {
     height: 100vh;
     font-size: 16px;
     font-family: 'Press Start 2P', cursive;
-    background-image: url("/home/renan/Documentos/lig4/bcgrd1.jpg");
+    background-image: url("bcgrd1.jpg");
     background-size: cover;
     background-repeat: round;
     background-color: #333;
